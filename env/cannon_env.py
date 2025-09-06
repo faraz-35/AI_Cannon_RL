@@ -89,7 +89,9 @@ class CannonEnv(gym.Env):
         distance = abs(landing_x - self.target_pos)
 
         # A simple reward function. The max reward is 0 (perfect hit).
-        reward = -distance / self.screen_width # Normalize reward
+        # Normalize reward
+        # Explicitly cast the reward to a standard Python float
+        reward = float(-distance / self.screen_width)
 
         # --- Define Episode End ---
         # In this environment, an episode is over after every single shot.
