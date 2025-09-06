@@ -22,7 +22,7 @@ model = PPO('MlpPolicy', env, verbose=1)
 # The agent will learn by interacting with the environment for a total of 30,000 steps.
 # This number is tunable - more steps can lead to better performance but take longer.
 print("Starting model training...")
-model.learn(total_timesteps=30000)
+model.learn(total_timesteps=100000)
 print("Model training finished.")
 
 # --- 4. Save the Trained Model ---
