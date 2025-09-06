@@ -54,9 +54,9 @@ class CannonEnv(gym.Env):
         super().reset(seed=seed)
 
         # Place the target at a new random location
-        # self.target_pos = self.observation_space.sample()[0]
+        self.target_pos = self.observation_space.sample()[0]
         # In the begining placing in a single position everytime
-        self.target_pos = self.fixed_target_pos
+        #self.target_pos = self.fixed_target_pos
 
         # Return the initial observation (state) and an empty info dict
         observation = np.array([self.target_pos], dtype=np.float32)
@@ -150,7 +150,8 @@ class CannonEnv(gym.Env):
         pygame.draw.circle(self.screen, WHITE, (int(self.cannon_pos[0]), int(self.cannon_pos[1])), 15)
 
         # Draw the target
-        pygame.draw.rect(self.screen, GREEN, (self.target_pos - 10, self.cannon_pos[1] - 10, 20, 20))
+        # Cast self.target_pos to an integer for Pygame
+        pygame.draw.rect(self.screen, GREEN, (int(self.target_pos) - 10, self.cannon_pos[1] - 10, 20, 20))
 
         # Draw the projectile path if provided
         if projectile_path and len(projectile_path) > 1:
